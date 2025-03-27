@@ -1,0 +1,9 @@
+package ui
+
+import (
+    "github.com/muhlemmer/kudofine/internal/model"
+)
+
+templ hello(resp model.HelloResponse) {
+    <div>Hello, { resp.Name }</div>
+}
