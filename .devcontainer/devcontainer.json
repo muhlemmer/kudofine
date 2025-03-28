@@ -14,7 +14,8 @@
 	"forwardPorts": [
 		8001
 	],
-	"postAttachCommand": "go mod download && go install github.com/a-h/templ/cmd/templ@latest",
+	"onCreateCommand": "go install github.com/a-h/templ/cmd/templ@latest",
+	"postAttachCommand": "go mod download",
 	"customizations": {
 		"vscode": {
 			"extensions": [
