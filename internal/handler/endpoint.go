@@ -12,8 +12,8 @@ func endpoint(method, host, path string) string {
 	}
 	if host != "" {
 		b.WriteString(host)
-		b.WriteString("/")
 	}
+	b.WriteString("/")
 	b.WriteString(path)
 	return b.String()
 }

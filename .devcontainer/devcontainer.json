@@ -7,14 +7,16 @@
 		"ghcr.io/devcontainers/features/go:1": {
 			"version": "1.24"
 		},
+		"ghcr.io/devcontainers/features/node:1": {},
 		"ghcr.io/guiyomh/features/golangci-lint:0": {},
 		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
-		"ghcr.io/devcontainers/features/github-cli:1": {}
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/jungaretti/features/make:1": {}
 	},
 	"forwardPorts": [
 		8001
 	],
-	"onCreateCommand": "go install github.com/a-h/templ/cmd/templ@latest",
+	"onCreateCommand": "npm install -g tailwindcss@3 && go install github.com/a-h/templ/cmd/templ@latest",
 	"postAttachCommand": "go mod download",
 	"customizations": {
 		"vscode": {

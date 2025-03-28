@@ -63,8 +63,8 @@ func Execute() {
 
 var cfg = config.Config{
 	AppName:        "kudofine",
-	ExternalDomain: "localhost",
-	ListenAddr:     "localhost:8888",
+	ExternalDomain: "127.0.0.1",
+	ListenAddr:     "127.0.0.1:8888",
 }
 
 func init() {
