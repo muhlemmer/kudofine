@@ -5,13 +5,23 @@ import (
 )
 
 templ page(data pageData) {
-    <html>
-        <head>
-            @title(data.config.AppName, data.pageName)
-        </head>
-        <body>
-            @data.body
-        </body>
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="color-scheme" content="light dark">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.pumpkin.min.css">
+        @title(data.config.AppName, data.pageName)
+    </head>
+    <body>
+        <main>
+        @data.main
+        </main>
+        <footer>
+        @data.footer
+        </footer>
+    </body>
     </html>
 }
 

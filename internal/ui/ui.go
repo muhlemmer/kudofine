@@ -19,20 +19,25 @@ func NewViews(config config.Config) Views {
 
 func (v Views) Hello(ctx context.Context, w http.ResponseWriter, resp model.HelloResponse) error {
 	const pageName = "Hello"
-	data := v.newPageData(pageName, hello(resp))
+	data := v.newPageData(pageName, hello(resp), nil)
 	return page(data).Render(ctx, w)
 }
 
 type pageData struct {
 	config   config.Config
 	pageName string
-	body     templ.Component
+	main     templ.Component
+	footer   templ.Component
 }
 
-func (v Views) newPageData(pageName string, body templ.Component) pageData {
+func (v Views) newPageData(pageName string, body, footer templ.Component) pageData {
+	if footer == nil {
+		footer = templ.Raw("")
+	}
 	return pageData{
 		config:   v.config,
 		pageName: pageName,
-		body:     body,
+		main:     body,
+		footer:   footer,
 	}
 }

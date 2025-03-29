@@ -1,6 +1,6 @@
 # Run templ generation in watch mode
 templ:
-	go tool templ generate --watch --proxy="http://localhost:8888" --open-browser=true -v
+	go tool templ generate --watch --proxy="http://localhost:8888" --open-browser=false -v
 
 # Run air for Go hot reload
 server:
