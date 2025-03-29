@@ -1,6 +1,6 @@
 # Run templ generation in watch mode
 templ:
-	go tool templ generate --watch --proxy="http://localhost:8888" --open-browser=false -v
+	go tool templ generate --watch --proxy="http://localhost:8888" --open-browser=true -v
 
 # Run air for Go hot reload
 server:
@@ -13,10 +13,9 @@ server:
 	--build.stop_on_error "false" \
 	--misc.clean_on_exit true
 
-# Watch Tailwind CSS changes
-tailwind:
-	tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch
-
 # Start development server with all watchers
 dev:
-	make -j3 templ server tailwind
+	make -j2 templ server
+
+generate:
+	go tool templ generate
