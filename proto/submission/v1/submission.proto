@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package submission.v1;
+
+import "google/protobuf/timestamp.proto";
+
+// SubmissionType represents the different types of submission as kudo or fine.
+enum SubmissionType {
+  SUBMISSION_TYPE_UNSPECIFIED = 0;
+  SUBMISSION_TYPE_KUDO = 1; // Good
+  SUBMISSION_TYPE_FINE = 2; // Bad
+  SUBMISSION_TYPE_BOTH = 3; // Both
+}
+
+// Submission represents a submission in the submission store.
+message Submission {
+  string submission_id = 1;
+  SubmissionType submission_type = 2;
+  string title = 3;
+  string description = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
+message GetSubmissionRequest {
+  string submission_id = 1;
+}
+
+message GetSubmissionResponse {
+  Submission submission = 1;
+}
+
+message CreateSubmissionRequest {
+  SubmissionType submission_type = 1;
+  string title = 2;
+  string description = 3;
+}
+
+message CreateSubmissionResponse {
+  Submission submission = 1;
+}
+
+message UpdateSubmissionRequest {
+  string submission_id = 1;
+  optional SubmissionType submission_type = 2;
+  optional string title = 3;
+  optional string description = 4;
+}
+
+message UpdateSubmissionResponse {
+  Submission submission = 1;
+}
+
+message DeleteSubmissionRequest {
+  string submission_id = 1;
+}
+
+message DeleteSubmissionResponse {}
+
+service SubmissionService {
+  rpc GetSubmission(GetSubmissionRequest) returns (GetSubmissionResponse) {}
+  rpc CreateSubmission(CreateSubmissionRequest) returns (CreateSubmissionResponse) {}
+  rpc UpdateSubmission(UpdateSubmissionRequest) returns (UpdateSubmissionResponse) {}
+  rpc DeleteSubmission(DeleteSubmissionRequest) returns (DeleteSubmissionResponse) {}
+}

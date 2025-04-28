@@ -21,7 +21,21 @@ THE SOFTWARE.
 */
 package main
 
-import "github.com/muhlemmer/kudofine/cmd"
+import (
+	"github.com/muhlemmer/kudofine/cmd"
+	"github.com/muhlemmer/kudofine/internal/version"
+)
+
+// go build -ldflags="-X 'main.version=$(git describe --tags)'" -o kudofine .
+var (
+	Version     = "dev"
+	Environment = "dev"
+)
+
+func init() {
+	version.SetVersion(Version)
+	version.SetEnvironment(Environment)
+}
 
 func main() {
 	cmd.Execute()
